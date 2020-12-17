@@ -29,7 +29,8 @@ export const GoogleMaps = ({ pins }) => {
         center={center_demo}
         zoom={14}
       >
-        {pins.map((item, i) => {
+        {pins && pins.map((item, i) => {
+          const {name, type, review, experience, cleanliness, prodquality, price, lat, lng, isfake} = item;
           return (
               <Marker
                 key={item.name}
@@ -38,7 +39,7 @@ export const GoogleMaps = ({ pins }) => {
               >
                 {selected && selected === i && (
                   <InfoWindow onCloseClick={() => setSelected(null)}>
-                    <p>hello world</p>
+                    <p>{name}</p>
                   </InfoWindow>
                 )}
               </Marker>
