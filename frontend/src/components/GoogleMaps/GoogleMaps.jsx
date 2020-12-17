@@ -41,7 +41,7 @@ export const GoogleMaps = ({pins}) => {
                 position={{ lat: item.lat, lng: item.lng }}
                 onClick={() => onSelect(item)}
               >
-                {/* <InfoWindow>hello world</InfoWindow> */}
+                <InfoWindow><p>hello world</p></InfoWindow>
               </Marker>
             </>
           );
