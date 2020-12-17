@@ -54,9 +54,9 @@ function FirstMenu() {
     return (
         <div id="firstMenu">
             <form>
-                <label for="username">Input Username: </label>
+                <label htmlFor="username">Input Username: </label>
                 <input type="text" id="username" name="username"></input> <br />
-                <label for="zip">Input Zip Code: </label>
+                <label htmlFor="zip">Input Zip Code: </label>
                 <input type="text" id="zip" name="zip"></input>
             </form>
         </div>
