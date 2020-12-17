@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./GoogleMaps.scss";
 import {
   GoogleMap,
   LoadScript,
@@ -29,22 +30,38 @@ export const GoogleMaps = ({ pins }) => {
         center={center_demo}
         zoom={14}
       >
-        {pins && pins.map((item, i) => {
-          const {name, type, review, experience, cleanliness, prodquality, price, lat, lng, isfake} = item;
-          return (
+        {pins &&
+          pins.map((item, i) => {
+            const {
+              name,
+              type,
+              review,
+              experience,
+              cleanliness,
+              prodquality,
+              price,
+              lat,
+              lng,
+              isfake,
+            } = item;
+            return (
               <Marker
                 key={item.name}
                 position={{ lat: item.lat, lng: item.lng }}
-                onClick={() => {setSelected(i)}}
+                onClick={() => {
+                  setSelected(i);
+                }}
               >
                 {selected && selected === i && (
                   <InfoWindow onCloseClick={() => setSelected(null)}>
-                    <p>{name}</p>
+                    <div className="info-window">
+                      <p>{name}</p>
+                    </div>
                   </InfoWindow>
                 )}
               </Marker>
-          );
-        })}
+            );
+          })}
       </GoogleMap>
     </LoadScript>
   );
