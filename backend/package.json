@@ -1,0 +1,38 @@
+{
+  "name": "map-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lauirvin/TheGramTag.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lauirvin/TheGramTag/issues"
+  },
+  "homepage": "https://github.com/lauirvin/TheGramTag#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "eslint-config-google": "^0.9.1",
+    "eslint-config-standard": "^11.0.0",
+    "express": "^4.16.2",
+    "express-es6-template-engine": "^2.0.3",
+    "jsdoc": "^3.5.5",
+    "mysql": "^2.15.0",
+    "nodejs": "0.0.0",
+    "nodemon": "^1.17.1",
+    "npm": "^6.14.9",
+    "readline-sync": "^1.4.9",
+    "sqlite3": "^4.2.0",
+    "start": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint-config-rallycoding": "^3.2.0"
+  }
+}
