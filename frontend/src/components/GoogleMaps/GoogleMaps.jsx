@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import "./GoogleMaps.scss";
 import {
   GoogleMap,
   LoadScript,
@@ -19,12 +20,8 @@ const center_demo = {
 // name: string, category: string (restaurant, retail store),
 // review: string, ratings: dictionary (criteria : ), latitude: int, longitude: int
 
-export const GoogleMaps = ({pins}) => {
-  const [selected, setSelected] = React.useState({});
-  
-  const onSelect = (item) => {
-    setSelected(item);
-  };
+export const GoogleMaps = ({ pins }) => {
+  const [selected, setSelected] = useState(null);
 
   return (
     <LoadScript googleMapsApiKey="AIzaSyCaqLHmoHvFy_t4H3EZiuvHOmcm2nbt0bI">
@@ -33,22 +30,41 @@ export const GoogleMaps = ({pins}) => {
         center={center_demo}
         zoom={14}
       >
-        {pins.map((item) => {
-          return (
-            <>
+        {pins &&
+          pins.map((item, i) => {
+            const {
+              name,
+              type,
+              review,
+              experience,
+              cleanliness,
+              prodquality,
+              price,
+              lat,
+              lng,
+              isfake,
+            } = item;
+            return (
               <Marker
                 key={item.name}
                 position={{ lat: item.lat, lng: item.lng }}
-                onClick={() => onSelect(item)}
+                onClick={() => {
+                  setSelected(i);
+                }}
               >
-                <InfoWindow><p>hello world</p></InfoWindow>
+                {selected && selected === i && (
+                  <InfoWindow onCloseClick={() => setSelected(null)}>
+                    <div className="info-window">
+                      <p>{name}</p>
+                    </div>
+                  </InfoWindow>
+                )}
               </Marker>
-            </>
-          );
-        })}
+            );
+          })}
       </GoogleMap>
     </LoadScript>
   );
-}
+};
 
 export default GoogleMaps;
