@@ -66,7 +66,7 @@ function Map() {
     </LoadScript>
   )
 }
-
+/*
 function Pin(lat, lon, local){
     return (
         {
@@ -79,6 +79,6 @@ function Pin(lat, lon, local){
             }
         }
     )
-}
+}*/
 
 export default React.memo(Map)

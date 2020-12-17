@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
-import MyComponent from './MapAPI'
-
+import Map from './Map'
+/*
 class User extends React.Component {
     constructor(props){
         super(props);
@@ -33,6 +33,7 @@ class User extends React.Component {
         return this.state._lon;
     }
 }
+*/
 
 const center = (lat, lon) => {
     return {
@@ -43,7 +44,6 @@ const center = (lat, lon) => {
 
 function TopNav() {
     return (
-        
         <div id="topnav">
             <button ></button>
         </div>
@@ -67,7 +67,7 @@ function Combined() {
     return (
         <div id='all'>
             <FirstMenu />
-            <MyComponent />
+            <Map />
         </div>
     )
 }
