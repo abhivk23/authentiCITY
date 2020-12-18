@@ -6,6 +6,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+import StarRatings from "react-star-ratings";
 
 const containerStyle = {
   width: "1600px",
@@ -17,12 +18,8 @@ const center_demo = {
   lng: -87.5917,
 };
 
-// name: string, category: string (restaurant, retail store),
-// review: string, ratings: dictionary (criteria : ), latitude: int, longitude: int
-
-export const GoogleMaps = ({ pins }) => {
+export const GoogleMaps = ({ pins, user_type }) => {
   const [selected, setSelected] = useState(null);
-
   return (
     <LoadScript googleMapsApiKey="AIzaSyCaqLHmoHvFy_t4H3EZiuvHOmcm2nbt0bI">
       <GoogleMap
@@ -43,6 +40,7 @@ export const GoogleMaps = ({ pins }) => {
               lat,
               lng,
               isfake,
+              viewMode
             } = item;
             return (
               <Marker
@@ -51,11 +49,60 @@ export const GoogleMaps = ({ pins }) => {
                 onClick={() => {
                   setSelected(i);
                 }}
+                icon={(viewMode) ? 'http://maps.google.com/mapfiles/ms/icons/green-dot.png' : 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'}
               >
                 {selected && selected === i && (
-                  <InfoWindow onCloseClick={() => setSelected(null)}>
+                  <InfoWindow 
+                  onCloseClick={() => setSelected(null)}
+                  >
                     <div className="info-window">
-                      <p>{name}</p>
+                      <div>
+                      <h4>{(viewMode) ? "Local Review" : "Visitor Review"}</h4>
+                      <h2>{name}</h2>
+                      <div id="container">
+                        <div className="rating">
+                          <p>Experience: </p>
+                          <StarRatings
+                            name='experience_rating'
+                            rating={experience}
+                            starRatedColor="gold"
+                            numberOfStars={5}
+                            starDimension="20px"
+                            starSpacing="5px"
+                          />
+                          <p>Cleanliness: </p>
+                          <StarRatings
+                            name='cleanliness_rating'
+                            rating={cleanliness}
+                            starRatedColor="gold"
+                            numberOfStars={5}
+                            starDimension="20px"
+                            starSpacing="5px"
+                          />
+                          <p>Product Quality: </p>
+                          <StarRatings
+                            name='product_rating'
+                            rating={prodquality}
+                            starRatedColor="gold"
+                            numberOfStars={5}
+                            starDimension="20px"
+                            starSpacing="5px"
+                          />
+                          <p>Price: </p>
+                          <StarRatings
+                            name='price_rating'
+                            rating={price}
+                            starRatedColor="gold"
+                            numberOfStars={5}
+                            starDimension="20px"
+                            starSpacing="5px"
+                          />
+                        </div>
+                        </div>
+                        <div className="reviews">
+                          <p><b>Top Review: </b><i>{review}</i></p>
+                        </div>
+                      </div>
                     </div>
                   </InfoWindow>
                 )}

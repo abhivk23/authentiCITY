@@ -3,6 +3,7 @@ import { GoogleMaps, FirstMenu } from "./components";
 import logo from "./logo.svg";
 import { fetchPins } from "./api";
 import "./App.css";
+import "./style.css"
 
 function App() {
   const [pins, setPins] = useState(null);
